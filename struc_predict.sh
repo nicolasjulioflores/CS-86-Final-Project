@@ -8,4 +8,4 @@
 #$ -l gpu
 
 source ~cs86/students/bin/setupPyr.sh
-python struc_predict_repack.py
+python control_file.py

@@ -18,10 +18,10 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
 
   # initial pose, based on sequence only and using given representation
   sim = pose_from_sequence(in_sequence, method)
-  sim.pdb_info().name(inprotein[:-4] + "_sim")
+  sim.pdb_info().name(in_protein[:-4] + "_sim")
 
   # actual 1le0 structure, taken from pymol
-  correct = pose_from_pdb(inprotein)
+  correct = pose_from_pdb(in_protein)
 
   # create scorer using score3 and set an initial score
   scorer = create_score_function(scoring)
@@ -41,7 +41,7 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
   bestScore = 10000000
 
   out_file = open(outfile, 'a')
-  out_file.write("repacking frequency for this run is " + str(repack_freq[j]) + "\n")
+  out_file.write("repacking frequency for this run is " + str(repack_freq) + "\n")
 
   total_count = 0
   count = 0
