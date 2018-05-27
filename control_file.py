@@ -27,6 +27,6 @@ if __name__ == "__main__":
     end = time.time()
 
     real_time = end - start
-    time_file.write(str(repack) + " " + str(real_time) + "\n") 
+    time_file.write(str(freq) + " " + str(real_time) + "\n") 
   
   time_file.close()
