@@ -96,8 +96,8 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
       mover.apply(temp)
 
   # inform about best score after MC run
-  print "best score this run is " + str(scorer(best)) + "\n"
-  print "it has a RMSD of " + str(CA_rmsd(correct, best))
+  out_file.write("rmsd best score this run is " + str(scorer(best)) + "\n")
+  out_file.write("rmsd it has a RMSD of " + str(CA_rmsd(correct, best)))
 
   # write out best score to file
   dist = CA_rmsd(correct, best) 
