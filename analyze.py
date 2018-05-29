@@ -23,7 +23,7 @@ except:
     print("Need file permissions!\n")
     quit()
 
-out_name = sys.argv[1] + ".csv"
+out_name = sys.argv[2] + ".csv"
 out_file = open(out_name, "w")
 
 old = pose_from_pdb(sys.argv[1])

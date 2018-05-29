@@ -7,7 +7,7 @@ init()
 
 
 def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = False, length=100000, kT=1):
-  
+
   # Full atom or centroid?
   if standard == False:
     method = 'centroid'
@@ -29,7 +29,7 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
   scorer = create_score_function(scoring)
   currentScore = scorer(sim)
 
-  # set up a temp pose 
+  # set up a temp pose
   temp = Pose()
   temp.assign(sim)
 
@@ -47,9 +47,9 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
 
   total_count = 0
   count = 0
-  for i in range(length): 
+  for i in range(length):
     # find random residue number to change
-    index = random.randint(1, 12) 
+    index = random.randint(1, sim.total_residue()) 
 
     #changing phi and psi angles in range [-10, 10]
     temp.set_phi(index,temp.phi(index) + random.randrange(-10,10))
@@ -68,7 +68,7 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
       if (tempScore < bestScore):
         bestScore=tempScore
         best.assign(temp)
-      
+
       # increment count of accepted structures
       count += 1
 
@@ -100,7 +100,7 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
   out_file.write("rmsd it has a RMSD of " + str(CA_rmsd(correct, best)))
 
   # write out best score to file
-  dist = CA_rmsd(correct, best) 
+  dist = CA_rmsd(correct, best)
   out_file.write(str(dist) + " ")
   out_file.write(str(scorer(best)) + "\n")
 
