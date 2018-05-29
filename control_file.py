@@ -7,10 +7,10 @@ init()
 
 
 if __name__ == "__main__":
-  NUM_RUNS = 2
-  SEQ = ["SWTWEGNKWTWK", "SWTWEGNKWTWK"] # string sequence
-  P_FILE = ["1le0_m1.pdb", "1le0_m1.pdb"] # pdb file
-  STANDARD = [True, False]
+  NUM_RUNS = 4
+  SEQ = ["GPHMGNIMSASFAPECTDLKTKYDSCFNEWYSEKFLKGKSVENECSKQWYAYTTCVNAALVKQGIKPAL", "GPHMGNIMSASFAPECTDLKTKYDSCFNEWYSEKFLKGKSVENECSKQWYAYTTCVNAALVKQGIKPAL", "KELRCQCIKTYSKPFHPKFIKELRVIESGPHCANTEIIVKLSDGRELCLDPKENWVQRVVEKFLKRAENS", "KELRCQCIKTYSKPFHPKFIKELRVIESGPHCANTEIIVKLSDGRELCLDPKENWVQRVVEKFLKRAENS"] # string sequence
+  P_FILE = ["4ytv.clean.pdb", "4ytv.clean.pdb", "4xdx.clean.pdb", "4xdx.clean.pdb"] # pdb file
+  STANDARD = [True, False, True, False]
   OUTBASE = "rmsd_output_repack"
   REPACK_FREQ = [10, 100, 1000, 10000]
   
@@ -28,7 +28,7 @@ if __name__ == "__main__":
       fout.write("rmsd and score between current and native structure\nrmsd\t\tscore\n")
 
     # Write the header for the time file
-    time_file = open("time_file_{0}.txt".format(P_FILE[i][:-4]), 'w')
+    time_file = open("time_file_{0}_{1}.txt".format(P_FILE[i][:-4], out_s), 'w')
     time_file.write(P_FILE[i] + " standard: " + str(STANDARD[i]) + "\n")
 
     for freq in REPACK_FREQ:
