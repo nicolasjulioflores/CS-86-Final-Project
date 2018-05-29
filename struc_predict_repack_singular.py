@@ -12,9 +12,11 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
   if standard == False:
     method = 'centroid'
     scoring = 'score3'
+    output = 'centroid'
   else:
     method = 'fa_standard'
     scoring = 'standard'
+    output = 'fullatom'
 
   # initial pose, based on sequence only and using given representation
   sim = pose_from_sequence(in_sequence, method)
@@ -105,6 +107,6 @@ def predict_repack(in_sequence, in_protein, outfile, repack_freq, standard = Fal
   print "\nSaving best structure of this run to pdb file\n"
 
   # put best pose into a new pdb file
-  dump_pdb(best, 'output_' + str(repack_freq) +'.pdb')
+  dump_pdb(best, 'output_' + in_protein[:-4] + "_" + output + "_" + str(repack_freq) +'.pdb')
 
   out_file.close()
