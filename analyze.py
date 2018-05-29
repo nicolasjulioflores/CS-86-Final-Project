@@ -30,7 +30,7 @@ old = pose_from_pdb(sys.argv[1])
 new = pose_from_pdb(sys.argv[2])
 num_res = old.total_residue()
 
-out_file.write("Res #,Original,Repacked,Status\n")
+out_file.write("Res #,Res Name,Original,Designed,Original # Adjacent,Designed # Adjacent\n")
 
 old_bur_num = 0
 old_bur_cons = 0
@@ -56,17 +56,17 @@ for j in xrange(1, num_res + 1):
             if new_dist <= 8:
                 new_num_adj += 1
     if old_num_adj > 7 and new_num_adj > 7:
-        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",B,B\n")
+        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",B,B," + str(old_num_adj) + "," + str(new_num_adj) + "\n")
         old_bur_num += 1
         old_bur_cons += 1
     elif old_num_adj > 7 and new_num_adj <= 7:
-        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",B,E\n")
+        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",B,E," + str(old_num_adj) + "," + str(new_num_adj) + "\n")
         old_bur_num += 1
     elif old_num_adj <= 7 and new_num_adj > 7:
-        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",E,B\n")
+        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",E,B," + str(old_num_adj) + "," + str(new_num_adj) + "\n")
         old_exp_num += 1
     else:
-        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",E,E\n")
+        out_file.write(str(j) + "," + old.residue(j).name()[:3] + ",E,E," + str(old_num_adj) + "," + str(new_num_adj) + "\n")
         old_exp_num += 1
         old_exp_cons += 1
 
