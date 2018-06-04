@@ -1,0 +1,17 @@
+Res #,Res Name,Original,Designed,Original # Adjacent,Designed # Adjacent
+1,SER,E,B,4,8
+2,TRP,E,B,7,9
+3,THR,B,E,8,7
+4,TRP,E,E,6,7
+5,GLU,E,E,6,6
+6,GLY,E,B,4,9
+7,ASN,E,E,3,7
+8,LYS,E,E,5,5
+9,TRP,E,B,7,9
+10,THR,B,B,8,10
+11,TRP,E,E,6,7
+12,LYS,E,E,5,6
+1/2 buried residues remained buried
+6/10 exposed residues remained exposed
+RMSD for alpha-C's is 4.27347373962
+RMSD over all atoms is 7.0324883461
